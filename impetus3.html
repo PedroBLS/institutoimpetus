@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ímpetus - Ensino Personalizado e Psicopedagogia</title>
+    <link rel="preload" href="Logo_Impetus-preto.png" as="image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --white: #ffffff;
+            --gray-light: #bdc3c7;
+            --accent-dark: #d35400;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #128C7E;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+        
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-img {
+            height: 100px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: contrast(110%);
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 2rem;
+            width: 300px;
+            transition: transform 0.3s;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .pricing {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .service-card h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .price-range {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .price-range:before {
+            content: '→';
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .benefits-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            line-height: 1.5;
+        }
+
+        .benefits-list i {
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 1.1em;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--whatsapp);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 2rem 0 0;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem;
+            position: relative;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .testimonial-card:before {
+            content: """;
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            position: absolute;
+            top: 0;
+            left: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--primary);
+        }
+        
+        .about {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            background: var(--gray-light);
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            opacity: 0.6;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 4px;
+        }
+        
+        .contact-form button {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        
+        .contact-form button:hover {
+            background: var(--accent-dark);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .footer-logo-img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        
+        .footer-links h3 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Modal de confirmação */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-content:before {
+            content: '\f232';
+            font-family: 'Font Awesome 6 Brands';
+            font-size: 3rem;
+            color: var(--whatsapp);
+            opacity: 0.1;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            min-width: 120px;
+        }
+
+        .modal-btn.confirm {
+            background: var(--whatsapp);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .modal-btn.confirm:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn.cancel {
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--gray-light);
+        }
+
+        .modal-btn.cancel:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            
+            .logo-img {
+                height: 70px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .footer-logo-img {
+                height: 60px;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <div class="logo">
+                <img src="Logo_Impetus-preto.png" alt="Ímpetus Instituição de Ensino" class="logo-img">
+            </div>
+            <div class="nav-links">
+                <a href="#home">Início</a>
+                <a href="#about">Sobre Nós</a>
+                <a href="#services">Serviços</a>
+                <a href="#contact">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Ensino com acolhimento, qualidade e personalização</h1>
+            <p>Transformando desafios de aprendizagem em oportunidades de crescimento</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5561994302031" class="btn">
+                    <i class="fab fa-whatsapp"></i> Fale Conosco
+                </a>
+                <a href="#services" class="btn btn-outline">Nossos Serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features container">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3>Aulas Personalizadas</h3>
+            <p>Metodologia adaptada às necessidades específicas de cada aluno, garantindo um aprendizado eficaz.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Suporte Psicopedagógico</h3>
+            <p>Acompanhamento especializado para identificar e superar dificuldades de aprendizagem.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-medal"></i>
+            </div>
+            <h3>Preparação para ENEM e PAS</h3>
+            <p>Estratégias eficientes para maximizar seu desempenho nos principais vestibulares.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Nossa História</h3>
+                    <p>O Ímpetus nasceu da visão de uma professora psicopedagoga que identificou a necessidade de um atendimento educacional mais personalizado e acolhedor. Começamos ajudando crianças com dificuldades de aprendizagem e hoje atendemos estudantes de todos os níveis, sempre com o mesmo compromisso com a excelência e o desenvolvimento integral.</p>
+                    
+                    <h3>Missão</h3>
+                    <p>Promover o desenvolvimento integral dos alunos por meio de um ensino personalizado e do suporte psicopedagógico, respeitando suas individualidades e estimulando a autonomia, a autoestima e o prazer pelo aprendizado.</p>
+                    
+                    <h3>Visão</h3>
+                    <p>Ser referência no Distrito Federal em ensino particular e psicopedagogia, reconhecido por nosso atendimento humanizado e pela capacidade de transformar desafios de aprendizagem em oportunidades de crescimento.</p>
+                </div>
+                <div class="about-image">
+                    [FOTO DA EQUIPE OU ESPAÇO FÍSICO]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="pricing">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="pricing-grid">
+                <!-- Aulas Particulares -->
+                <div class="service-card">
+                    <h3>Aulas Particulares</h3>
+                    <div class="price-range">A partir de R$85/hora</div>
+                    
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Professores especializados</li>
+                        <li><i class="fas fa-check"></i> Horários flexíveis</li>
+                        <li><i class="fas fa-check"></i> Material didático inclusivo</li>
+                        <li><i class="fas fa-check"></i> Acompanhamento personalizado</li>
+                    </ul>
+                    
+                    <button class="whatsapp-btn service-btn" data-service="aulas-particulares">
+                        <i class="fab fa-whatsapp"></i> Quero meu plano ideal
+                    </button>
+                </div>
+                
+                <!-- Aulas em Grupo -->
+                <div class="service-card">
+                    <h3>Aulas em Grupo</h3>
+                    <div class="price-range">A partir de R$45/hora por aluno</div>
+                    
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Grupos de 3 a 5 alunos</li>
+                        <li><i class="fas fa-check"></i> Preço acessível</li>
+                        <li><i class="fas fa-check"></i> Dinâmicas colaborativas</li>
+                        <li><i class="fas fa-check"></i> Material compartilhado</li>
+                    </ul>
+                    
+                    <button class="whatsapp-btn service-btn" data-service="aulas-grupo">
+                        <i class="fab fa-whatsapp"></i> Saber mais sobre grupos
+                    </button>
+                </div>
+                
+                <!-- Psicopedagogia -->
+                <div class="service-card">
+                    <h3>Psicopedagogia</h3>
+                    <div class="price-range">A partir de R$180/sessão</div>
+                    
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Avaliação especializada</li>
+                        <li><i class="fas fa-check"></i> Acompanhamento individual</li>
+                        <li><i class="fas fa-check"></i> Estratégias personalizadas</li>
+                        <li><i class="fas fa-check"></i> Relatórios detalhados</li>
+                    </ul>
+                    
+                    <button class="whatsapp-btn service-btn" data-service="psicopedagogia">
+                        <i class="fab fa-whatsapp"></i> Agendar avaliação
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal-overlay" id="whatsappModal">
+        <div class="modal-content">
+            <h3>Você será direcionado para o WhatsApp</h3>
+            <p id="modalMessage">Estamos preparando sua mensagem personalizada com os detalhes do serviço selecionado.</p>
+            <div class="modal-actions">
+                <button class="modal-btn confirm" id="confirmWhatsapp">
+                    <i class="fab fa-whatsapp"></i> Continuar
+                </button>
+                <button class="modal-btn cancel" id="cancelWhatsapp">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials container">
+        <h2>Depoimentos</h2>
+        <div class="testimonial-card">
+            <p>"O acompanhamento do Ímpetus foi fundamental para minha filha superar as dificuldades em matemática. Em poucos meses, suas notas melhoraram significativamente e ela recuperou a confiança."</p>
+            <div class="testimonial-author">- Mãe de aluna do 6º ano</div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para transformar sua aprendizagem?</h2>
+            <p>Agende uma aula experimental ou avaliação psicopedagógica sem compromisso.</p>
+            <a href="https://wa.me/5561994302031" class="btn">
+                <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact container">
+        <h2>Contato</h2>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i> (61) 99430-2031
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i> impetusinstituto@gmail.com
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i> SCLN 104 Bloco D Apartamento 121
+                </div>
+                <div class="contact-info">
+                    <i class="fab fa-instagram"></i> @impetusbsb
+                </div>
+            </div>
+            <div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <input type="tel" placeholder="Seu telefone">
+                    <textarea placeholder="Sua mensagem" rows="4" required></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="Logo_Impetus-preto.png" alt="Ímpetus" class="footer-logo-img">
+                    <p>Instituição de Ensino especializada em aulas particulares e psicopedagogia no Distrito Federal.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/impetusbsb" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/5561994302031" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Aulas Particulares</a></li>
+                        <li><a href="#">Psicopedagogia</a></li>
+                        <li><a href="#">Preparação para ENEM</a></li>
+                        <li><a href="#">Aulas em Grupo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Serviço</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Ímpetus Instituição de Ensino. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuração do modal e mensagens personalizadas
+        const modal = document.getElementById('whatsappModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const confirmBtn = document.getElementById('confirmWhatsapp');
+        const cancelBtn = document.getElementById('cancelWhatsapp');
+        
+        // Mensagens personalizadas por serviço
+        const serviceMessages = {
+            'aulas-particulares': {
+                message: 'Você está prestes a conversar sobre nossas Aulas Particulares. Enviaremos os valores completos e opções de pacotes com desconto.',
+                whatsappText: 'Olá! Gostaria de saber mais sobre as Aulas Particulares da Ímpetus. Poderia me enviar os detalhes dos pacotes e valores?'
+            },
+            'aulas-grupo': {
+                message: 'Você está prestes a conversar sobre nossas Aulas em Grupo. Enviaremos informações sobre turmas disponíveis e valores especiais.',
+                whatsappText: 'Olá! Tenho interesse nas Aulas em Grupo da Ímpetus. Poderia me informar sobre turmas disponíveis e valores?'
+            },
+            'psicopedagogia': {
+                message: 'Você está prestes agendar uma Avaliação Psicopedagógica. Enviaremos todos os detalhes sobre o processo e valores de pacotes.',
+                whatsappText: 'Olá! Gostaria de agendar uma Avaliação Psicopedagógica na Ímpetus. Poderia me informar sobre disponibilidade e valores?'
+            }
+        };
+
+        let currentService = null;
+        let whatsappUrl = 'https://wa.me/5561994302031?text=';
+
+        // Configura botões de serviço
+        document.querySelectorAll('.service-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                currentService = e.target.dataset.service;
+                const serviceData = serviceMessages[currentService];
+                
+                modalMessage.textContent = serviceData.message;
+                modal.classList.add('active');
+            });
+        });
+
+        // Confirmação do WhatsApp
+        confirmBtn.addEventListener('click', () => {
+            if (currentService) {
+                const message = encodeURIComponent(serviceMessages[currentService].whatsappText);
+                window.location.href = whatsappUrl + message;
+            }
+            modal.classList.remove('active');
+        });
+
+        // Cancelamento
+        cancelBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Fechar modal clicando fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
